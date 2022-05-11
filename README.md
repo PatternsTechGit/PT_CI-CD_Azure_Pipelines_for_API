@@ -1,10 +1,8 @@
 # CI/CD Azure Pipelines for API
 
-## What is *Http* and *Rest API's* ?
+## What is CI CD process in DevOps?
 
-**HTTP** is a communications protocol that transports messages over a network. **Rest** is a protocol to exchange any(*XML or JSON*) messages that can use HTTP to transport those messages.
-
-A RESTful API is an architectural style for an application program interface (API) that uses HTTP requests to access and use data. That data can be used to GET, PUT, POST and DELETE data types, which refers to the reading, updating, creating and deleting of operations concerning resources.
+*CI* stands for continuous integration, a fundamental DevOps best practice where developers frequently merge code changes into a central repository where automated builds and tests run. But *CD* can either mean continuous delivery or continuous deployment
 
 ---------------
 
@@ -52,8 +50,7 @@ For more details about this base project See: https://github.com/PatternsTechGit
  -  Give a meaningful website name for URL. In our case it is BBBankApiTest and our URL will be https://bbbankapitest.azurewebsites.net
 ![](/BBBankAPI/images/2.png)
 
-- Our publish version will be a *Code* written in 
-- Select *Runtime stack* as *.Net 6* as our API is written in .Net
+- Select *Runtime stack* as *.Net 6* since our API is written in .Net 6
 ![](/BBBankAPI/images/5.png)  
 
 - Select size of memory according to need and pricing model 
@@ -177,10 +174,30 @@ Before moving on to Continuous Deployment CD we will give permission to our orga
 
 - This is the URL we created for this lab https://bbbankapitest.azurewebsites.net/
 
-- Give the app extension in front of URL and check the output https://bbbankapitest.azurewebsites.net/api/Transaction/GetLast12MonthBalances/
+- Now let us replace our localHost:5700 with this URL https://bbbankapitest.azurewebsites.net/api/Transaction/GetLast12MonthBalances/
 
 - We can now see output result of our API as seen below
 ![](/BBBankAPI/images/29.png)
 
 ---------------------
-### *Note: For production environment we can copy all these steps and select either we want to manually trigger the production environment or automatically*
+
+## Production Environment 
+- For production environment we will follow same steps and first create new Azure Web App 
+![](/BBBankAPI/images/31.png)
+
+- In devops portal our build pipeline will remain same but we will clone our release pipeline.
+- After cloning we will change the name and select tab as shown below to manually trigger this production environment.
+![](/BBBankAPI/images/32.png)
+
+- We don't want this environment to run automatically whenever our test release pipeline completes its stage. So we will trigger it manually
+![](/BBBankAPI/images/33.png)
+
+- Now we will edit the tasks and jobs in production environment. 
+- To fulfil this we only have to change the name of or WebApi as we have cloned whole pipeline from test release pipeline.
+- This will publish the same artifact to production API.
+![](/BBBankAPI/images/34.png)
+
+- Now our Web api URL is https://bbbankapiprod.azurewebsites.net
+- We will replace localhost:5700 with our current URL and same output can be seen in browser https://bbbankapiprod.azurewebsites.net/api/Transaction/GetLast12MonthBalances/
+
+------------------
