@@ -13,7 +13,7 @@ In this lab we will be working on API code Base, **Backend Code base**
 
 Previously we developed a base structure of an api solution in Asp.net core that have just two api functions GetLast12MonthBalances & GetLast12MonthBalances/{userId} which returns data of the last 12 months total balances.
 
-![](/BBbankAPI/images/12m.jpg)
+![](/BBBankAPI/images/12m.jpg)
 
 
 There are 4 Projects in the solution. 
